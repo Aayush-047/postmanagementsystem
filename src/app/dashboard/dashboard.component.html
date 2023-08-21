@@ -1,0 +1,50 @@
+<!-- dashboard.component.html -->
+<div>
+
+  <h1>Post Management system</h1>
+  <div class="log-bt">
+    <button (click)="logout()" class="edit-button">Logout</button>
+  </div>
+  <!-- Your post management UI elements go here -->
+
+
+
+  <!--The code to display images -->
+  <!-- <button (click)="postData()">add Data</button> -->
+  <form (submit)="postData(newPost)">
+    <!-- Pass the newPost object to postData -->
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" [(ngModel)]="newPost.title" required>
+
+    <label for="body">Body:</label>
+    <textarea id="body" name="body" [(ngModel)]="newPost.body" required></textarea>
+
+    <button type="submit">Add Post</button>
+  </form>
+
+  <!-- <form (submit)="updateData()">
+    <label for="editTitle">Title:</label>
+    <input type="text" id="editTitle" name="editTitle" [(ngModel)]="editPost.title" required>
+
+    <label for="editBody">Body:</label>
+    <textarea id="editBody" name="editBody" [(ngModel)]="editPost.body" required></textarea>
+
+    <button type="submit">Update Post</button>
+  </form> -->
+  <div class="post-container">
+    <div *ngFor="let image of data" class="post-card">
+      <div class="card-header">
+        <h2>{{ image.id }}</h2>
+      </div>
+      <div class="card-content">
+        <h3>{{ image.title }}</h3>
+        <p>{{ image.body }}</p>
+      </div>
+      <div class="card-footer">
+        <button class="delete-button" (click)="deleteData(image.id)">Delete</button>
+        <!-- <button class="edit-button" (click)="editData(image.id)">Edit</button> -->
+      </div>
+    </div>
+  </div>
+
+</div>
